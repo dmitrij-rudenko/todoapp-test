@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <v-main class="mx-auto">
+    <v-main>
       <v-container>
         <Nuxt />
       </v-container>

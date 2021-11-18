@@ -26,20 +26,7 @@
 				</v-btn>
 			</div>
 		</v-form>
-		<v-dialog v-model="counterDialog" class="counter-dialog" width="500">
-			<v-card>
-				<v-card-text class="pa-5">
-					Общее количество задач: {{ itemsCount }}
-				</v-card-text>
-
-				<v-divider></v-divider>
-
-				<v-card-actions>
-					<v-spacer></v-spacer>
-					<v-btn color="red" text @click="counterDialog = false">Закрыть</v-btn>
-				</v-card-actions>
-			</v-card>
-		</v-dialog>
+		<todo-counter v-if="counterDialog" @close="counterDialog = false"/>
 	</div>
 </template>
 
@@ -47,14 +34,8 @@
 export default {
 	data: () => ({
 		newTodoText: '',
-		counterDialog: true,
+		counterDialog: false,
 	}),
-
-	computed: {
-		itemsCount() {
-			return this.$store.state.todos.list.length
-		},
-	},
 
 	methods: {
 		addTodo() {
