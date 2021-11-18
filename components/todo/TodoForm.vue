@@ -20,13 +20,13 @@
 				<v-btn
 					height="55"
 					color="primary"
-					@click.prevent="counterDialog = true"
+					@click.prevent="toggleCounter(true)"
 				>
 					Открыть счетчик
 				</v-btn>
 			</div>
 		</v-form>
-		<todo-counter v-if="counterDialog" @close="counterDialog = false"/>
+		<todo-counter v-if="counterDialog" @close="toggleCounter(false)"/>
 	</div>
 </template>
 
@@ -43,6 +43,9 @@ export default {
 
 			this.$store.commit('todos/add', this.newTodoText)
 			this.newTodoText = ''
+		},
+		toggleCounter(isOpen) {
+			this.counterDialog = isOpen
 		},
 	},
 }
